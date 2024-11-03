@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 
+import sum from '@/test';//=import sum from './test'
+
+
+const all=sum(1, 3)
+console.log(all);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
     <App />
+    
 
+    
 );
 
 // If you want to start measuring performance in your app, pass a function
