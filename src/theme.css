@@ -1,0 +1,8 @@
+/*全局生效样式*/
+/* :root:root{
+  --adm-color-primary:#a062d4;
+} */
+/*局部生效*/
+.puple {
+  --adm-color-primary: #a062d4;
+}
