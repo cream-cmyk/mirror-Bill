@@ -1,16 +1,21 @@
-.layout{
-  .container{
+.layout {
+  display: flex;
+  justify-content: center;
+  /* 水平居中 */
+  align-items: center;
+
+  /* 垂直居中 */
+  .container {
     position: fixed;
-    top: 0;
+    top: 10px;
     bottom: 50px;
-    left: 0;
-    right: 0;
+    width: 375px;
+    height: 675 px;
   }
-  .footer{
-    position:fixed;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    right: 0;
+
+  .footer {
+    position: fixed;
+    bottom: 20px;
+    width: 375px;
   }
 }
