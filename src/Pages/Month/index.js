@@ -1,3 +1,4 @@
+/*默认导出不需要{}*/
 import { NavBar, DatePicker } from 'antd-mobile'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
@@ -121,9 +122,9 @@ const Month = () => {
         </div>
         {/*单日列表统计*/}
         {dayGroup.keys.map(item => {
-         return <DailyBill key={item} date={item} billList={dayGroup.group[item]} />
+          return <DailyBill key={item} date={item} billList={dayGroup.group[item]} />
         })}
-        
+
       </div>
     </div >
   )

@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import './index.scss'
 import { useMemo, useState } from 'react'
 import { billTypeToName } from '../../../../contants/index'
+import Icon from '@/components/icon/index'
 
 const DailyBill = ({ date, billList }) => {
   //计算统计
@@ -51,6 +52,8 @@ const DailyBill = ({ date, billList }) => {
         {billList.map(item => {
           return (
             <div className="bill" key={item.id}>
+              {/*图标适配*/}
+              <Icon type={item.useFor } />
               <div className="detail">
                 {/*中文适配*/}
                 <div className="billType">{billTypeToName[item.useFor]}</div>
