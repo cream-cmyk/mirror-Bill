@@ -1,7 +1,8 @@
 import classNames from 'classnames'
 import './index.scss'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { billTypeToName } from '../../../../contants/index'
+
 const DailyBill = ({ date, billList }) => {
   //计算统计
   const viewDayResult = useMemo(() => {
@@ -17,12 +18,18 @@ const DailyBill = ({ date, billList }) => {
       total: income + pay
     }
   }, [billList])//根据billList进行变化，所以他作为依赖项传入
+  //切换账单状态
+  const [visible, setVisible] = useState(false)
+
+
+
   return (
     <div className={classNames('dailyBill')}>
-      <div className="header">
+      <div className="header" onClick={() => setVisible(!visible)}>
         <div className="dateIcon">
           <span className="date">{date}</span>
-          <span className={classNames('arrow')}></span>
+          {/*expand:箭头朝上*/}
+          <span className={classNames('arrow', visible && 'expand')}></span>
         </div>
         <div className="oneLineOverview">
           <div className="pay">
@@ -40,11 +47,12 @@ const DailyBill = ({ date, billList }) => {
         </div>
       </div>
       {/* 单日列表 */}
-      <div className="billList">
+      <div className="billList" style={{ display: visible ? "block" : 'none' }}>
         {billList.map(item => {
           return (
             <div className="bill" key={item.id}>
               <div className="detail">
+                {/*中文适配*/}
                 <div className="billType">{billTypeToName[item.useFor]}</div>
               </div>
               <div className={classNames('money', item.type)}>

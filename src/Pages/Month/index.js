@@ -17,7 +17,7 @@ const Month = () => {
   }, [billList])
   console.log(monthGroup)
 
-  //选择框弹出状态--默认false
+  //选择框弹状态--默认false
   const [dateVisible, setDateVisible] = useState(false)
   //修改日期状态
   const [currentDate, setCurrentDate] = useState(() => {
