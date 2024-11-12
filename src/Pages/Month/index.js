@@ -1,7 +1,7 @@
 import { NavBar, DatePicker } from 'antd-mobile'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import './index.scss'
 import _ from 'lodash'
@@ -52,6 +52,16 @@ const Month = () => {
       total: income + pay
     }
   }, [currentMonthList])//根据currentMonthList进行变化，所以他作为依赖项传入
+
+  //首次加载--初始化的时候把当前月的数据显示出来
+  useEffect(() => {
+    //dayjs()不传参，默认传当前日期时间
+    const nowDate = dayjs().format('YYYY | MM')
+    //以当前时间作为key获取账单(monthGroup函数依赖于billList从异步请求接收数据，首次加载会为空，要判空)
+    if (monthGroup[nowDate]) {
+      setCurrentMonthList(monthGroup[nowDate])
+    }
+  }, [monthGroup])
 
   return (
     <div className="monthlyBill">
