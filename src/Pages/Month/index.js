@@ -37,7 +37,7 @@ const Month = () => {
     //修改日期view
     setCurrentDate(formatDate)
     // 根据获取到的时间作为key取当月的账单数组
-    setCurrentMonthList(monthGroup[formatDate])
+    setCurrentMonthList(monthGroup[formatDate] || [])
   }
 
   //计算统计

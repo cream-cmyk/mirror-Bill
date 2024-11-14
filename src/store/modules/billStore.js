@@ -3,16 +3,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const billStore= createSlice({
+const billStore = createSlice({
   name: 'bill',
   //数据状态
   initialState: {
-    billList:[]
+    billList: []
   },
   reducers: {
-    //同步修改方法
+    //同步修改账单方法
     setBillList (state, action) {
-      state.billList=action.payload
+      state.billList = action.payload
+    },
+    //同步增加账单
+    addBillList (state, action) {
+      state.billList.push(action.payload)
     }
   }
 })
@@ -25,13 +29,21 @@ const getBillList = () => {
     //触发同步reducer
     dispath(setBillList(res.data))
   }
-  
+}
+
+const addBillListPost = (data) => {
+  return async (dispath) => {
+    //异步请求
+    const res = await axios.post('http://localhost:8888/ka', data)
+    //触发同步reducer
+    dispath(addBillList(res.data))
+  }
 }
 
 //解构createAction函数
-const { setBillList,} = billStore.actions
-const Billreducer=billStore.reducer
+const { setBillList, addBillList } = billStore.actions
+const Billreducer = billStore.reducer
 //导出
-export { setBillList,getBillList}
+export { setBillList, addBillList, getBillList, addBillListPost }
 
 export default Billreducer

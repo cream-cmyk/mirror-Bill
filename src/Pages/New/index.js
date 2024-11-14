@@ -5,11 +5,36 @@ import classNames from 'classnames'
 import { billListData } from '@/contants'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addBillListPost } from '@/store/modules/billStore'
 
 const New = () => {
   const navigate = useNavigate()
   //切换收入支持状态---默认支出pay；收入income
   const [billType, setBillType] = useState('pay')
+
+  //收集金额
+  const [billMoney, setbillMoney] = useState(0)
+  const moneyChage = (value) => {
+    setbillMoney(value)
+  }
+  //收集账单状态
+  const [billuseFor, setBilluseFor] = useState('')
+
+  //调异步请求dispath
+  const dispath = useDispatch();
+  //保存账单
+  const saveBill = () => {
+    //收集数据
+    const data = {
+      type: billType,
+      money: billType === "income" ? +billMoney : -billMoney,
+      date: new Date(),
+      useFor: billuseFor
+    }
+    console.log(data)
+    dispath(addBillListPost(data))
+  }
 
   return (
     <div className="keepAccounts">
@@ -22,12 +47,12 @@ const New = () => {
           <Button
             onClick={() => setBillType('pay')}
             shape="rounded"
-            className={classNames(billType==='pay' ? 'selected' : '')}
+            className={classNames(billType === 'pay' ? 'selected' : '')}
           >
             支出
           </Button>
           <Button onClick={() => setBillType('income')}
-            className={classNames(billType=== 'income'?'selected' : '')}
+            className={classNames(billType === 'income' ? 'selected' : '')}
             shape="rounded"
           >
             收入
@@ -50,6 +75,8 @@ const New = () => {
                 className="input"
                 placeholder="0.00"
                 type="number"
+                value={billMoney}
+                onChange={moneyChage}
               />
               <span className="iconYuan">¥</span>
             </div>
@@ -69,9 +96,12 @@ const New = () => {
                     <div
                       className={classNames(
                         'item',
-                        ''
+                        billuseFor === item.type ? 'selected' : ''
                       )}
                       key={item.type}
+                      onClick={() => {
+                        setBilluseFor(item.type)
+                      }}
 
                     >
                       <div className="icon">
@@ -88,7 +118,7 @@ const New = () => {
       </div>
 
       <div className="btns">
-        <Button className="btn save">
+        <Button className="btn save" onClick={saveBill}>
           保 存
         </Button>
       </div>
