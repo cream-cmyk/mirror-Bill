@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addBillListPost } from '@/store/modules/billStore'
+import dayjs from 'dayjs'
 
 const New = () => {
   const navigate = useNavigate()
@@ -23,17 +24,33 @@ const New = () => {
 
   //调异步请求dispath
   const dispath = useDispatch();
+
   //保存账单
   const saveBill = () => {
     //收集数据
     const data = {
       type: billType,
       money: billType === "income" ? +billMoney : -billMoney,
-      date: new Date(),
+      date: date,
       useFor: billuseFor
     }
     console.log(data)
     dispath(addBillListPost(data))
+  }
+
+  //控制记账时间状态 ：true打开时间选择器，false关闭
+  const [dateVisible, setDateVisible] = useState(false)
+
+  
+  //记录当前选择记账的时间状态
+  const [date, setDate] = useState()
+ //点击确认，调用函数
+  const dateConfirm = (value) => {
+    //设置时间
+    setDate(value)
+    //设置时间选择器状态
+    setDateVisible(false)
+    console.log(value)
   }
 
   return (
@@ -63,11 +80,15 @@ const New = () => {
           <div className="kaForm">
             <div className="date">
               <Icon type="calendar" className="icon" />
-              <span className="text">{'今天'}</span>
+              <span className="text" onClick={() => setDateVisible(true)}>{dayjs(date).format('YYYY-MM-DD')}</span>
               <DatePicker
                 className="kaDate"
                 title="记账日期"
                 max={new Date()}
+                //时间选择器是否显示
+                visible={dateVisible}
+                //单击“确认”功能
+                onConfirm={dateConfirm}
               />
             </div>
             <div className="kaInput">

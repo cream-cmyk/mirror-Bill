@@ -125,6 +125,33 @@
       "money": -110,
       "date": "2024-11-14T03:33:04.287Z",
       "useFor": "longdistance"
+    },
+    {
+      "id": "de2a",
+      "type": "pay",
+      "money": -10,
+      "date": "2023-11-13T16:00:00.000Z",
+      "useFor": "food"
+    },
+    {
+      "id": "d7ec",
+      "type": "pay",
+      "money": -980,
+      "useFor": "bodybuilding"
+    },
+    {
+      "id": "45a6",
+      "type": "pay",
+      "money": -981,
+      "date": "2024-11-13T16:00:00.000Z",
+      "useFor": "bodybuilding"
+    },
+    {
+      "id": "fe12",
+      "type": "pay",
+      "money": -1014,
+      "date": "2024-10-13T16:00:00.000Z",
+      "useFor": "food"
     }
   ]
 }

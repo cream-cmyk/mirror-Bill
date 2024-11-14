@@ -6,6 +6,8 @@
   .header {
     --ka-text-color: #888c98;
     padding: 15px 15px 10px 15px;
+    background-color: #b8edc8;
+    border-radius: 10px;
 
     .dateIcon {
       display: flex;
@@ -13,6 +15,7 @@
       align-items: center;
       height: 21px;
       margin-bottom: 9px;
+
       .arrow {
         display: inline-block;
         width: 5px;
@@ -25,6 +28,7 @@
         transform-origin: center;
         transition: all 0.3s;
       }
+
       .arrow.expand {
         transform: translate(0, 2px) rotate(45deg);
       }
@@ -34,17 +38,20 @@
       }
     }
   }
+
   .oneLineOverview {
     display: flex;
     justify-content: space-between;
 
     .pay {
       flex: 1;
+
       .type {
         font-size: 10px;
         margin-right: 2.5px;
         color: #e56a77;
       }
+
       .money {
         color: var(--ka-text-color);
         font-size: 13px;
@@ -53,11 +60,13 @@
 
     .income {
       flex: 1;
+
       .type {
         font-size: 10px;
         margin-right: 2.5px;
         color: #4f827c;
       }
+
       .money {
         color: var(--ka-text-color);
         font-size: 13px;
@@ -74,6 +83,7 @@
         margin-right: 6px;
         font-size: 17px;
       }
+
       .type {
         font-size: 10px;
         color: var(--ka-text-color);
@@ -84,6 +94,7 @@
   .billList {
     padding: 15px 10px 15px 15px;
     border-top: 1px solid #ececec;
+
     .bill {
       display: flex;
       justify-content: space-between;
@@ -99,9 +110,11 @@
         margin-right: 10px;
         font-size: 25px;
       }
+
       .detail {
         flex: 1;
         padding: 4px 0;
+
         .billType {
           display: flex;
           align-items: center;
@@ -111,12 +124,14 @@
           padding-left: 4px;
         }
       }
+
       .money {
         font-size: 17px;
 
         &.pay {
           color: #ff917b;
         }
+
         &.income {
           color: #4f827c;
         }
@@ -124,10 +139,12 @@
     }
   }
 }
+
 .dailyBill.expand {
   .header {
     border-bottom: 1px solid #ececec;
   }
+
   .billList {
     display: block;
   }

@@ -14,6 +14,7 @@
     .adm-nav-bar-back-arrow {
       font-size: 20px;
     }
+    
   }
 
   .content {
@@ -25,20 +26,21 @@
     &::-webkit-scrollbar {
       display: none; /* Safari and Chrome */
     }
-
+    
     > .header {
-      height: 135px;
+      height: 125px;
       padding: 20px 20px 0px 18.5px;
       margin-bottom: 10px;
-      background-image: url("./拾光_拾光_564.jpg");
       background-size: 100% 100%;
+      background-color:#daf2e1;
+      border-radius: 10px;
 
       .date {
         display: flex;
         align-items: center;
         margin-bottom: 25px;
         font-size: 16px;
-
+        
         .arrow {
           display: inline-block;
           width: 7px;
@@ -50,6 +52,8 @@
           transform: rotate(225deg);
           transform-origin: center;
           transition: all 0.3s;
+          
+          
         }
         .arrow.expand {
           transform: translate(0, 2px) rotate(45deg);
@@ -60,12 +64,15 @@
   .twoLineOverview {
     display: flex;
     justify-content: space-between;
-    width: 250px;
+    width: 300px;
+    
+    
 
     .item {
       display: flex;
       flex-direction: column;
-
+      
+      
       .money {
         height: 24px;
         line-height: 24px;

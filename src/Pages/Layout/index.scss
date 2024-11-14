@@ -1,21 +1,23 @@
 .layout {
   display: flex;
   justify-content: center;
-  /* 水平居中 */
-  align-items: center;
+  //border: 2px solid gray;
 
   /* 垂直居中 */
   .container {
     position: fixed;
-    top: 10px;
-    bottom: 50px;
+    top: 0px;
+
     width: 375px;
-    height: 675 px;
+    height: 100%;
+    // border: 1px solid;
+
   }
 
   .footer {
     position: fixed;
-    bottom: 20px;
+    bottom: 0px;
     width: 375px;
+    background-color: #9dd1ad;
   }
 }
