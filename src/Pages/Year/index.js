@@ -47,6 +47,7 @@ const BillAll = () => {
               <span className={classNames('arrow', visible && 'expand')}></span>
             </div>
           </NavBar>
+          <div className='TwoLineOverview'></div>
           <TwoLineOverview
             pay={overview.pay}
             income={overview.income}

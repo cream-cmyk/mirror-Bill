@@ -8,7 +8,7 @@
   //   rgba(218, 242, 225, 0) 100%
   // );
   background-size: 100% 380px;
-  background-repeat:repeat;
+  background-repeat: repeat;
   background-color: rgba(245, 245, 245, 0.9);
   color: var(--ka-text-color);
 
@@ -16,17 +16,19 @@
     --adm-font-size-10: 16px;
     color: #121826;
     background-color: transparent;
+
     &::after {
       height: 0;
     }
-    
+
 
     .nav-title {
       display: flex;
       align-items: center;
       justify-content: center;
-      
+
     }
+
     .arrow {
       display: inline-block;
       width: 7px;
@@ -38,8 +40,9 @@
       transform: rotate(225deg);
       transform-origin: center;
       transition: all 0.3s;
-      
+
     }
+
     .expand {
       transform: translate(0, 2px) rotate(45deg);
     }
@@ -48,16 +51,24 @@
   .content {
     height: 673px;
     overflow-y: scroll;
-    
-    > .overview {
+
+
+    >.overview {
       height: 135px;
-      padding: 0px 20px 0px 28.5px;
+      padding: 10px;
       margin: 10px;
-      margin-bottom: 10px;
-      margin-left: 10px;
+      // margin-bottom: 10px;
+      //margin-left: 10px;
       background-size: 100% 100%;
       border-radius: 10px;
-      background-color:#daf2e1;
+      background-color: #daf2e1;
+
+    }
+
+    .twoLineOverview {
+      display: flex;
+      justify-content: space-between;
+      width: 300px;
     }
 
     .monthBill {
@@ -67,7 +78,7 @@
       margin: 10px;
       border-radius: 10px;
       background: #ffffff;
-      background-color:  #b8edc8;
+      background-color: #b8edc8;
 
       .date {
         margin-bottom: 10px;

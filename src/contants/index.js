@@ -75,11 +75,16 @@ export const billTypeToName = Object.keys(billListData).reduce((prev, key) => {
   return prev
 }, {})
 
+//对传入的账单数据进行汇总，计算每种类型的金额并记录最后一条数据的日期
 export const getOverview = (data = []) => {
   return data.reduce(
     (prev, item) => {
       return {
-        ...prev,
+        //将累积的结果对象 prev 的所有属性展开到新的对象中
+        ...prev,// 初始pay: 0, income: 0, date: null 
+
+        //将当前账单的日期 item.date 赋值给 date 属性。
+        //注意，这里 date 属性会在每次迭代中被覆盖，因此最终结果中 date 将是最后一个账单的日期。
         date: item.date,
         [item.type]: prev[item.type] + +item.money,
       }
@@ -88,6 +93,7 @@ export const getOverview = (data = []) => {
   )
 }
 
+//计算某个月的账单概览。它的作用是过滤出指定月份的账单数据，并将这些数据传递给 getOverview 函数进行汇总。
 export const getMonthOverview = (data, month) => {
   // 某个月的账单可能有多个
   const bill = data.filter(item => {
